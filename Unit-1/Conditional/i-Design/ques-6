@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter marks in 3 subjects:");
+        int mark1 = scanner.nextInt();
+        int mark2 = scanner.nextInt();
+        int mark3 = scanner.nextInt();
+
+        double averageMark = (mark1 + mark2 + mark3) / 3.0;
+        char grade;
+        if (averageMark >= 90) {
+            grade = 'A';
+        } else if (averageMark >= 80) {
+            grade = 'B';
+        } else if (averageMark >= 70) {
+            grade = 'C';
+        } else if (averageMark >= 60) {
+            grade = 'D';
+        } else if (averageMark >= 50) {
+            grade = 'E';
+        } else {
+            grade = 'F';
+        }
+        System.out.println("The grade is " + grade);
+
+        scanner.close();
+    }
+}
