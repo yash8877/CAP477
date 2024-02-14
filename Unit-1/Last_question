@@ -23,7 +23,7 @@ public class Main {
         System.out.println("Event Type : "+eventType);
         System.out.println("Expected Count : "+numOfPeople);
         System.out.println("Paid Entry : "+Character.toUpperCase(choose));
-        System.out.println("Projected Expense : "+String.format("%.2f",expenses)+"L");
+        System.out.println("Projected Expense : "+String.format("%.1f",expenses)+"L");
         sc.close();
     }
 }
