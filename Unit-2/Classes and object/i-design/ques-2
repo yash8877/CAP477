@@ -1,0 +1,73 @@
+for the ***********Customer.java********** file paste this code
+class Customer {
+    private String customerName;
+    private String customerEmail;
+    private String customerType;
+    private String customerLocation;
+
+    public Customer(String customerName, String customerEmail, String customerType, String customerLocation) {
+        this.customerName = customerName;
+        this.customerEmail = customerEmail;
+        this.customerType = customerType;
+        this.customerLocation = customerLocation;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
+    }
+
+    public void setCustomerType(String customerType) {
+        this.customerType = customerType;
+    }
+
+    public void setCustomerLocation(String customerLocation) {
+        this.customerLocation = customerLocation;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public String getCustomerEmail() {
+        return customerEmail;
+    }
+
+    public String getCustomerType() {
+        return customerType;
+    }
+
+    public String getCustomerLocation() {
+        return customerLocation;
+    }
+
+}
+
+for the *******Main.java******* file paste this code
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the Customer Details");
+        System.out.println("Enter the name");
+        String name = scanner.nextLine();
+        System.out.println("Enter the email");
+        String email = scanner.nextLine();
+        System.out.println("Enter the type");
+        String type = scanner.nextLine();
+        System.out.println("Enter the location");
+        String location = scanner.nextLine();
+
+        Customer customer = new Customer(name, email, type, location);
+
+        System.out.println("Customer Details");
+        System.out.println("Name: " + customer.getCustomerName());
+        System.out.println("E-mail: " + customer.getCustomerEmail());
+        System.out.println("Type: " + customer.getCustomerType());
+        System.out.println("Location: " + customer.getCustomerLocation());
+    }
+}
