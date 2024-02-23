@@ -1,0 +1,41 @@
+*********paste this code in the Address.java file***********
+public class Address{
+    public
+    String street,city,country;
+    int pincode;
+    Address(String street, String city, String country, int pincode){
+        this.street=street;
+        this.city=city;
+        this.country=country;
+        this.pincode=pincode;
+    }
+    void displayAddress(){
+        System.out.println("Street: "+street);
+        System.out.println("City: "+city);
+        System.out.println("Pincode: "+pincode);
+        System.out.println("Country: "+country);
+    }
+}
+
+
+now, paste this code in ********Main.java****** file
+class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String st,ct,con;
+        int pin;
+        System.out.println("Enter Customer Address");
+        System.out.println("Enter the street");
+        st = sc.nextLine();
+        System.out.println("Enter the city");
+        ct = sc.nextLine();
+        System.out.println("Enter the pincode");
+        pin = sc.nextInt();
+        System.out.println("Enter the country");
+        con = sc.next();
+        Address a1 = new Address(st, ct, con, pin);
+        a1.displayAddress();
+
+    }
+}
