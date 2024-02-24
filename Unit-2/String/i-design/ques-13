@@ -43,7 +43,10 @@ class Item {
     }
 
     public String toString(){
-        return name + "," + type +"," + cost + "," + (avialbleQuantity > 0 ? "Available" : "Not Available");
+        StringBuilder sb = new StringBuilder();
+        sb.append(name).append(",").append(type).append(",").append(cost).append(",");
+        sb.append(availableQuantity > 0 ? "Available" : "Not Available");
+        return sb.toString();
     }
 }
 
@@ -58,7 +61,6 @@ class Main {
         scanner.nextLine();
         System.out.println("Enter the item details in the format(Item Name$Item Type$Item Cost$Item Availability)");
         Item iteminfo[] = new Item[num];
-        StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < num; i++) {
             String details[] = scanner.nextLine().split("\\$");
