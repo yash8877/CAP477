@@ -45,7 +45,7 @@ class Item {
     public String toString(){
         StringBuilder sb = new StringBuilder();
         sb.append(name).append(",").append(type).append(",").append(cost).append(",");
-        sb.append(availableQuantity > 0 ? "Available" : "Not Available");
+        sb.append(avialbleQuantity > 0 ? "Available" : "Not Available");
         return sb.toString();
     }
 }
