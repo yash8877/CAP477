@@ -1,1 +1,52 @@
-wait for the code
+import java.util.Scanner;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String str1, str2;
+        str1 = scanner.next();
+        str2 = scanner.next();
+
+        System.out.println("Length of the first string is " + findLength(str1));
+        System.out.println("Length of the second string is " + findLength(str2));
+        System.out.println("The reverse of the first string is " + reverseString(str1));
+        System.out.println("The reverse of the second string is " + reverseString(str2));
+        System.out.println("The concatenated string is " + str1 + str2);
+        int result = comprstr(str1, str2);
+        if (result < 0) {
+            System.out.println(str1 + " appears before " + str2);
+        } else if (result > 0) {
+            System.out.println(str2 + " appears before " + str1);
+        } else {
+            System.out.println("Both the input strings are same");
+        }
+
+    }
+
+    public static int findLength(String str) {
+        int count = 0;
+        for (char ch : str.toCharArray()) {
+            count++;
+        }
+        return count;
+    }
+
+    public static String reverseString(String str) {
+        int pos = findLength(str);
+        String rev = "";
+        for (int i = pos - 1; i >= 0; i--) {
+            rev = rev + str.charAt(i);
+        }
+        return rev;
+    }
+
+    public static int comprstr(String str1, String str2) {
+        int minLength = Math.min(findLength(str1),findLength(str2));
+        for (int i = 0; i < minLength; i++) {
+            if (str1.charAt(i) != str2.charAt(i)) {
+                return str1.charAt(i) - str2.charAt(i);
+            }
+        }
+        return findLength(str1) - findLength(str2);
+    }
+}
