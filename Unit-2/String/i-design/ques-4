@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the text from the document");
+        String document = scanner.nextLine();
+
+        System.out.println("Enter the string to be found in the data");
+        String str = scanner.nextLine();
+        String newstr = str.trim();
+        if (document.contains(newstr)) {
+            System.out.println("String is found in the document");
+        } else {
+            System.out.println("String is not found in the document");
+        }
+
+    }
+}
