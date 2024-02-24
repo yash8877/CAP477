@@ -1,1 +1,16 @@
-wait for the code
+import java.util.Scanner;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String sentence = sc.nextLine();
+
+        sentence = sentence.replace("yes", "s");
+        sentence = sentence.replace("you", "u");
+        sentence = sentence.replace("today", "2day");
+        sentence = sentence.replace("why", "y");
+
+        System.out.println(sentence);
+    }
+}
+
