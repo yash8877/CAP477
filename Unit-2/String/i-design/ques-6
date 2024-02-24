@@ -1,1 +1,16 @@
-ascaca
+import java.util.Scanner;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the string");
+        String inputString = scanner.nextLine();
+        System.out.println("Enter the string to be searched");
+        String searchString = scanner.nextLine();
+        System.out.println("The index of last occurrence of \"" + searchString + "\" is " + inputString.lastIndexOf(searchString));
+        System.out.println("Enter the index limit");
+        int indexLimit = scanner.nextInt();
+        System.out.println("First occurrence of \"" + searchString + "\" from " + indexLimit + "th index backwards is " + inputString.lastIndexOf(searchString, indexLimit));
+    }
+}
+
