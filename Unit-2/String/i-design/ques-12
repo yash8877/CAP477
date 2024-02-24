@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the code");
+        String input = scanner.nextLine();
+        StringBuilder code = new StringBuilder();
+
+        if (input.startsWith("DH")) {
+            code.replace(0, 2, "DEL");
+        } else if (input.startsWith("MB")) {
+            code.replace(0, 2, "MUB");
+        } else if (input.startsWith("KL")) {
+            code.replace(0, 2, "KOL");
+        } else {
+            System.out.println("Invalid code");
+        }
+
+        int num = Integer.parseInt(input.substring(2));
+        String numstr = String.format("%05d", num);
+
+        code.append(numstr);
+        System.out.println("Formatted code\n" + code);
+
+    }
+}
