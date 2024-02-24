@@ -1,0 +1,14 @@
+import java.util.Scanner;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the string");
+        String inputString = scanner.nextLine();
+        String newstring[] = inputString.split("\\s+");
+        System.out.println("The words in the string are");
+        for (String words : newstring) {
+            System.out.println(words);
+        }
+    }
+}
