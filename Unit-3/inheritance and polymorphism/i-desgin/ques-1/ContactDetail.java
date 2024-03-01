@@ -1,51 +1,60 @@
-public class User {
-    private String name;
-    private String username;
-    private String password;
-    private ContactDetail contactDetail;
+public class ContactDetail {
+    private String mobile;
+    private String alternateMobile;
+    private String landLine;
+    private String email;
+    private String address;
 
-    public User(String name, ContactDetail contactDetail, String username, String password) {
-        this.name = name;
-        this.username = username;
-        this.password = password;
-        this.contactDetail = contactDetail;
+    public ContactDetail(String mobile, String alternateMobile, String landLine, String email, String address) {
+        this.mobile = mobile;
+        this.alternateMobile = alternateMobile;
+        this.landLine = landLine;
+        this.email = email;
+        this.address = address;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public String getAlternateMobile() {
+        return alternateMobile;
     }
 
-    public void setContactDetail(ContactDetail contactDetail) {
-        this.contactDetail = contactDetail;
+    public void setAlternateMobile(String alternateMobile) {
+        this.alternateMobile = alternateMobile;
     }
 
-    public String getName() {
-        return name;
+    public String getLandLine() {
+        return landLine;
     }
 
-    public String getUsername() {
-        return username;
+    public void setLandLine(String landLine) {
+        this.landLine = landLine;
     }
 
-    public String getPassword() {
-        return password;
+    public String getEmail() {
+        return email;
     }
 
-    public ContactDetail getContactDetail() {
-        return contactDetail;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Override
     public String toString() {
-        return "Name:" + name + "\nUsername:" + username + "Password:" + password + "\nContact details:\n"
-                + contactDetail;
+        return "Mobile: " + mobile + "\nAlternate mobile: " + alternateMobile + "\nLandLine: " + landLine + "\nEmail: " + email + "\nAddress: " + address + "\n";
     }
 }
