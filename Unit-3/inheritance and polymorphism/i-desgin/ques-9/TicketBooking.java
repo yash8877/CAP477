@@ -51,6 +51,6 @@ public class TicketBooking {
 
     public void makePayment(String creditCard,String ccv,String name,double amount){
         display();
-        System.out.println("Amount "+amount+" paid in cash");
+        System.out.println("Amount "+amount+" paid using "+creditCard+" card\nCCV:"+ccv);
     }
 }
