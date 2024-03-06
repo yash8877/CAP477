@@ -39,7 +39,9 @@ public class TicketBooking {
         this.noOfSeats = noOfSeats;
     }
 
-    public void makePayment(double amount){}
+    public void makePayment(double amount){
+        
+    }
     public void makePayment(String walletNumber,double amount){}
     public void makePayment(String creditCard,String ccv,String name,double amount){}
 }
