@@ -3,12 +3,6 @@ public class TicketBooking {
     private String customer;
     private Integer noOfSeats;
 
-    public TicketBooking() {
-        this.stageEvent = "";
-        this.customer = "";
-        this.noOfSeats = 0;
-    }
-
     public TicketBooking(String stageEvent, String customer, Integer noOfSeats) {
         this.stageEvent = stageEvent;
         this.customer = customer;
@@ -34,14 +28,29 @@ public class TicketBooking {
     public Integer getNoOfSeats() {
         return noOfSeats;
     }
-
+    
     public void setNoOfSeats(Integer noOfSeats) {
         this.noOfSeats = noOfSeats;
     }
 
-    public void makePayment(double amount){
-
+    public void display(){
+        System.out.println("Stage event:"+getStageEvent());
+        System.out.println("Customer:"+getCustomer());
+        System.out.println("Number of seats:"+getNoOfSeats());
     }
-    public void makePayment(String walletNumber,double amount){}
-    public void makePayment(String creditCard,String ccv,String name,double amount){}
+
+    public void makePayment(double amount){
+        display();
+        System.out.println("Amount "+amount+" paid in cash");
+    }
+
+    public void makePayment(String walletNumber,double amount){
+        display();
+        System.out.println("Amount "+amount+" paid using wallet number "+walletNumber);
+    }
+
+    public void makePayment(String creditCard,String ccv,String name,double amount){
+        display();
+        System.out.println("Amount "+amount+" paid in cash");
+    }
 }
