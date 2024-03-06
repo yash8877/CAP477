@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class Main {
+public class Main{
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the Booking details");
@@ -10,7 +10,8 @@ public class Main {
         System.out.println("3.Credit card payment");
         int ch = sc.nextInt();
         sc.nextLine();
-        
+        TicketBooking tb = new TicketBooking();
+
 
     }
 }
