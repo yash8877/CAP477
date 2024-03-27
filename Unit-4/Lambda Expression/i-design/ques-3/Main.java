@@ -1,45 +1,52 @@
 import java.util.*;
-class Event {
-    private String eventName;
-    private String organiserName;
-    private Double eventCost;
 
-    public Event() {
-    }
+class Main
+{
+    public static void main(String args[])
+    {
+                Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter number of events");
+        int n = Integer.parseInt(scanner.nextLine());
 
-    public Event(String eventName, String organiserName, Double eventCost) {
-        this.eventName = eventName;
-        this.organiserName = organiserName;
-        this.eventCost = eventCost;
-    }
+        if (n <= 0) {
+            System.out.println("Invalid Input");
+            return;
+        }
 
-    public String getEventName() {
-        return eventName;
-    }
+        List<Event> events = new ArrayList<>();
 
-    public void setEventName(String eventName) {
-        this.eventName = eventName;
-    }
+        System.out.println("Enter event details in CSV(Event Name,Event Type,Orgnaizer Name)");
 
-    public String getOrganiserName() {
-        return organiserName;
-    }
+        for (int i = 0; i < n; i++) {
+            String[] details = scanner.nextLine().split(",");
+            String eventName = details[0].trim();
+            String eventType = details[1].trim();
+            String organizer = details[2].trim();
+            events.add(new Event(eventName, eventType, organizer));
+        }
 
-    public void setOrganiserName(String organiserName) {
-        this.organiserName = organiserName;
-    }
+        System.out.println("Filter:");
+        System.out.println("1)Using Event name");
+        System.out.println("2)Using Event type");
+        System.out.println("3)Using Organizer name");
+        System.out.println("Choice:");
+        int choice = Integer.parseInt(scanner.nextLine());
 
-    public Double getEventCost() {
-        return eventCost;
-    }
+        if (choice < 1 || choice > 3) {
+            System.out.println("Invalid Input");
+            return;
+        }
 
-    public void setEventCost(Double eventCost) {
-        this.eventCost = eventCost;
-    }
+        System.out.println("Enter value:");
+        String value = scanner.nextLine();
 
-    public void display(List<Event> eventList) {
-       //Fill your code here
-        eventList.forEach(event -> System.out.println(event.getEventName() + "|" + event.getOrganiserName() + "|" + event.getEventCost()));
+        List<Event> filteredEvents = Event.filterEvents(events, value, choice);
+        if (filteredEvents.isEmpty()) {
+            System.out.println("No results found");
+        } else {
+            filteredEvents.forEach(event -> System.out.println(event.getEventName() + "|" + event.getEventType() + "|" + event.getOrganizer()));
+        }
+
+        scanner.close();
     }
 }
-   
