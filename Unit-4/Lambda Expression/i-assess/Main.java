@@ -1,59 +1,22 @@
 import java.util.*;
-import java.util.stream.Collectors;
-class Event {
-    private String eventName;
-    private String eventType;
-    private String organizer;
-    public Event() {}
-    public Event(String eventName, String eventType, String organizer) {
-        this.eventName = eventName;
-        this.eventType = eventType;
-        this.organizer = organizer;
-    }
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the number of item types:");
+        int n = scanner.nextInt();
+        scanner.nextLine(); 
 
-    public String getEventName() {
-        return eventName;
-    }
-
-    public void setEventName(String eventName) {
-        this.eventName = eventName;
-    }
-
-    public String getEventType() {
-        return eventType;
-    }
-
-    public void setEventType(String eventType) {
-        this.eventType = eventType;
-    }
-
-    public String getOrganizer() {
-        return organizer;
-    }
-
-    public void setOrganizer(String organizer) {
-        this.organizer = organizer;
-    }
-
-    public static List<Event> filterEvents(List<Event> eventList, String name, int id) {
-        List<Event> filteredEvents = new ArrayList<>();
-
-        switch (id) {
-            case 1:
-                filteredEvents = eventList.stream()
-                        .filter(event -> event.getEventName().equalsIgnoreCase(name))
-                        .collect(Collectors.toList());
-                break;
-            case 2:
-                filteredEvents = eventList.stream()
-                        .filter(event -> event.getEventType().equalsIgnoreCase(name))
-                        .collect(Collectors.toList());
-                break;
-            case 3:
-                filteredEvents = eventList.stream() .filter(event -> event.getOrganizer().equalsIgnoreCase(name)).collect(Collectors.toList());
-                break;
+        List<ItemType> itemTypes = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            String[] details = scanner.nextLine().split(",");
+            ItemType item = new ItemType(details[0], Double.parseDouble(details[1]), Double.parseDouble(details[2]));
+            itemTypes.add(item);
         }
+        Collections.sort(itemTypes, Comparator.comparing(ItemType::getName));
 
-        return filteredEvents;
+        System.out.printf("%-10s %-10s %s\n", "Name", "Cost", "Deposit");
+        for (ItemType item : itemTypes) {
+            System.out.printf("%-10s %-10s %s\n", item.getName(), item.getCostPerDay(), item.getDeposit());
+        }
     }
-}   
+}
