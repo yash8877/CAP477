@@ -53,7 +53,6 @@ class Event {
                 filteredEvents = eventList.stream() .filter(event -> event.getOrganizer().equalsIgnoreCase(name)).collect(Collectors.toList());
                 break;
         }
-
         return filteredEvents;
     }
 }   
