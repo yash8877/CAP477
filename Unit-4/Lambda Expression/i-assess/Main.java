@@ -19,4 +19,8 @@ public class Main {
             System.out.printf("%-10s %-10s %s\n", item.getName(), item.getCostPerDay(), item.getDeposit());
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> c79633fbce1c971b5ce81cb6afcaa97077f3e62a
