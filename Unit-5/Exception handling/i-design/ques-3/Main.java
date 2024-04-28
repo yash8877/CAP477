@@ -1,45 +1,41 @@
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.Scanner;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-public class Main {
+class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy-HH:mm:ss");
+        dateFormat.setLenient(false); // This will cause the date format to strictly match the given pattern
 
         System.out.println("Enter the stage event start date and end date");
 
+        // Prompt for start date
+        // System.out.print("Start date:");
+        String startDateStr = getNextLineOrEmpty(scanner);
+
+        // Prompt for end date
+        // System.out.print("End date:");
+        String endDateStr = getNextLineOrEmpty(scanner);
+
         try {
-            
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy-HH:mm:ss");
-            
-            String startDateInput = scanner.nextLine();
-            startDateInput = addLeadingZeros(startDateInput);
-            LocalDateTime startDate = LocalDateTime.parse(startDateInput, formatter);
+            // Parse start date
+            Date startDate = dateFormat.parse(startDateStr);
 
-            
-            String endDateInput = scanner.nextLine();
-            endDateInput = addLeadingZeros(endDateInput);
-            LocalDateTime endDate = LocalDateTime.parse(endDateInput, formatter);
+            // Parse end date
+            Date endDate = dateFormat.parse(endDateStr);
 
-            System.out.println("Start date:" + startDate.format(formatter));
-            System.out.println("End date:" + endDate.format(formatter));
-        } catch (DateTimeParseException e) {
+            // Output parsed dates
+            System.out.println("Start date:" + dateFormat.format(startDate));
+            System.out.println("End date:" + dateFormat.format(endDate));
+        } catch (ParseException e) {
+            // Exception occurred, notify the user about the right format
             System.out.println("Input dates should be in the format 'dd-MM-yyyy-HH:mm:ss'");
         }
     }
 
-    // Method to add leading zeros for single-digit hours, minutes, and seconds
-    private static String addLeadingZeros(String dateTimeInput) {
-        String[] components = dateTimeInput.split("-");
-        String timeComponent = components[3];
-        String[] timeParts = timeComponent.split(":");
-        for (int i = 0; i < timeParts.length; i++) {
-            if (timeParts[i].length() == 1) {
-                timeParts[i] = "0" + timeParts[i];
-            }
-        }
-        components[3] = String.join(":", timeParts);
-        return String.join("-", components);
+    private static String getNextLineOrEmpty(Scanner scanner) {
+        return scanner.hasNextLine() ? scanner.nextLine() : "";
     }
 }
