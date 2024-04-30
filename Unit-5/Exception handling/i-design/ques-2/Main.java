@@ -11,7 +11,7 @@ public class Main {
             System.out.println("Enter the cost per day:");
             Double costPerDay = Double.parseDouble(br.readLine());
             ItemType it = new ItemType(name,deposit,costPerDay);
-            System.out.println("The details of the item type are:\n"+it);
+             System.out.println("The details of the item type are:\n"+it);
         } catch (NumberFormatException | IOException e) {
             System.out.println(e.toString());
         }
