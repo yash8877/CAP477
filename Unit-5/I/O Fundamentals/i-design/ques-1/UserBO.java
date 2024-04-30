@@ -1,21 +1,22 @@
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-public class UserBO {
-    public List<User> readFromFile(BufferedReader br) throws IOException {
+class UserBO {
+    public List<User> readFromFile(BufferedReader br) {
         List<User> userList = new ArrayList<>();
-        String line;
-        while ((line = br.readLine()) != null) {
-            String[] data = line.split(",");
-            if (data.length == 4) {
-                String name = data[0].trim();
-                String email = data[1].trim();
-                String username = data[2].trim();
-                String password = data[3].trim();
-                userList.add(new User(name, email, username, password));
+        try {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+                if (data.length == 4) {
+                    User user = new User(data[0], data[1], data[2], data[3]);
+                    userList.add(user);
+                }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return userList;
     }
