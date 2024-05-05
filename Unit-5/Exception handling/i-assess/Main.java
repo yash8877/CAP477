@@ -5,78 +5,54 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
-        ArrayList<Hall> halls = new ArrayList<>();
-        ArrayList<Event> events = new ArrayList<>();
-        ArrayList<HallBooking> bookings = new ArrayList<>();
+	public static void main(String args[]) {
+		
+		ArrayList<Event> eventList=new ArrayList<>();
+		ArrayList<Hall> hallList=new ArrayList<>();
+		
+		eventList.add(new Event("Book Fair","All books available","John","Exhibition"));
+		eventList.add(new Event("Furniture Fair","Discount of 20%","Joe","Exhibition"));
+		eventList.add(new Event("Magic show","Magic without Logic","Jack","Stage event"));
+		
+		hallList.add(new Hall("Sdf hall","123456",new Double(10000.0),"Jill"));
+		hallList.add(new Hall("JKL hall","135790",new Double(25000.0),"James"));
+		hallList.add(new Hall("TUV hall","246800",new Double(15000.0),"Jane"));
+		
+		//write your code here
 
-        // Hardcoded values
-        halls.add(new Hall("Sdf hall", "1234567890", 15000.0, "John Doe"));
-        halls.add(new Hall("TUV hall", "0987654321", 20000.0, "Jane Smith"));
+		Scanner sc = new Scanner(System.in);
 
-        events.add(new Event("Book Fair", "Annual book fair", "Library Association", "Fair"));
-        events.add(new Event("Furniture Fair", "Exhibition of furniture", "Furniture Association", "Exhibition"));
+		ArrayList<HallBooking> hallbooking = new ArrayList<>();
 
-        Scanner scanner = new Scanner(System.in);
-        String choice = "";
-        do {
-            System.out.println("Enter the booking details:");
-            String input = scanner.nextLine();
-            String[] details = input.split(",");
-            String hallName = details[0].trim();
-            String eventName = details[1].trim();
-            String eventDateStr = details[2].trim();
-            Double price = Double.parseDouble(details[3].trim());
+		Hall hall = new Hall();
+		Event event = new Event();
+		
+		char x = 'y';
+		while(x == 'y') {
+			System.out.println("Enter the booking details:");
+			String details[] = sc.nextLine().split(",");
+			try {
+				Hall h = hall.hallpresent(hallList, details[0]);
+				Event e = event.eventpresent(eventList, details[1]);
+				
+				HallBooking newbooking = new HallBooking(h, e, details[2], details[3]);
+				HallBookingBO.validateHallBooking(hallbooking, newbooking);
+				hallbooking.add(newbooking);
+			}catch(HallNotAvailableException e) {
+				System.out.println(e);
+			}
 
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-            Date eventDate = null;
-            try {
-                eventDate = dateFormat.parse(eventDateStr);
-            } catch (ParseException e) {
-                System.out.println("Invalid date format. Please enter date in dd-MM-yyyy format.");
-                continue;
-            }
+			System.out.println("Do you want to continue?(y/n)");
+			String c = sc.nextLine();
+			x = c.charAt(0);
 
-            Hall hall = null;
-            Event event = null;
+		}
 
-            for (Hall h : halls) {
-                if (h.getName().equals(hallName)) {
-                    hall = h;
-                    break;
-                }
-            }
-
-            for (Event e : events) {
-                if (e.getName().equals(eventName)) {
-                    event = e;
-                    break;
-                }
-            }
-
-
-            try {
-            if (hall == null || event == null) {
-                throw new HallNotAvailableException("Hall or Event does not exist");
-            }
-            HallBooking booking = new HallBooking(hall, event, eventDate, price);
-
-                if (HallBookingBO.validateHallBooking(bookings, booking)) {
-                    bookings.add(booking);
-                }
-            } catch (HallNotAvailableException e) {
-                System.out.println(e);
-            }
-
-            System.out.println("Do you want to continue?(y/n)");
-            choice = scanner.nextLine();
-        } while (choice.equalsIgnoreCase("y"));
-
-        System.out.println("The bookings entered are:");
-        System.out.println("Hall id        Event id       Event date     Price");
-        for (HallBooking booking : bookings) {
-            System.out.println(booking);
+		 System.out.println("The bookings entered are:");
+        System.out.printf("%-15s%-15s%-15s%-15s\n", "Hall id", "Event id", "Event date", "Price");
+        for(HallBooking h : hallbooking) {
+            System.out.printf(h.toString());
         }
-    }
-}
 
+	}
+}

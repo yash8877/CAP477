@@ -1,52 +1,29 @@
-class Event {
-    private String name;
-    private String detail;
-    private String ownerName;
-    private String type;
+import java.util.ArrayList;
 
-    public Event(String name, String detail, String ownerName, String type) {
-        this.name = name;
-        this.detail = detail;
-        this.ownerName = ownerName;
-        this.type = type;
-    }
+public class Event {
+		private String name;
+		private String detail;
+		private String ownerName;
+		private String type;
 
-    // Getters and setters
-    public String getName() {
-        return name;
-    }
+        public Event() {};
 
-    public void setName(String name) {
-        this.name = name;
-    }
+        public Event(String name, String detail, String ownerName, String type) {
+            this.name = name;
+            this.detail = detail;
+            this.ownerName = ownerName;
+            this.type = type;
+        }
 
-    public String getDetail() {
-        return detail;
-    }
+        public String getName() {
+            return this.name;
+        }
 
-    public void setDetail(String detail) {
-        this.detail = detail;
-    }
+        public Event eventpresent(ArrayList<Event> events, String s) throws HallNotAvailableException {
+            for(Event e : events) {
+                if(e.getName().equals(s)) return e;
+            }
 
-    public String getOwnerName() {
-        return ownerName;
-    }
-
-    public void setOwnerName(String ownerName) {
-        this.ownerName = ownerName;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("Event id: %-15s Detail: %-15s Owner: %-15s Type: %-15s",
-                name, detail, ownerName, type);
-    }
+           throw new HallNotAvailableException("Hall or Event does not exist");
+        }
 }
